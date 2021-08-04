@@ -4,6 +4,7 @@ body {
   font-family: monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -15,10 +16,10 @@ code {
   color: white;
 }
 
-.bgc-1{
-  background-color:olive;
+.bgc-1 {
+  background-color: darkolivegreen;
 }
 
-.bgc-2{
-  background-color:darkolivegreen;
+.bgc-2 {
+  background-color: olive;
 }
