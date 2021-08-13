@@ -23,3 +23,8 @@ code {
 .bgc-2 {
   background-color: rgb(107, 107, 1);
 }
+
+.square-size {
+  max-width: 12.5vh;
+  max-height: 25vh;
+}

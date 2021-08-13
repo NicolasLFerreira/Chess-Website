@@ -11,7 +11,7 @@ class Square extends Component {
 
     render() {
         return (
-            <button class={this.props.boardStyle + " flex-grow-1 p-2 bd-highlight"} style={{ "width": "25vh" }, { "height": "12.5vh" }} onClick={() => this.props.movePiece(this.props.item)}>
+            <button class={this.props.boardStyle + " flex-grow-1 p-2 square-size"}  onClick={() => this.props.movePiece(this.props.item)}>
                 <div className="center-text">{this.props.item.icon}</div>
             </button>
         )

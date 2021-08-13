@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Rows from "./Components/Row";
-import PieceManagement from "./Board/PieceManagement";
 import BoardManagement from "./Board/BoardManagement";
 
-const pieceManager = new PieceManagement();
 const boardManager = new BoardManagement();
 
 class App extends Component {
@@ -35,7 +33,7 @@ class App extends Component {
                 let target = selectedTarget;
                 let newBoard = [...prevState.board];
 
-                newBoard[moving.pos[0]][moving.pos[1]] = pieceManager.createPiece(6, moving.pos[0] >= 4, moving.pos);
+                newBoard[moving.pos[0]][moving.pos[1]] = boardManager.createPiece(6, moving.pos[0] >= 4, moving.pos);
                 moving.pos = target.pos;
                 newBoard[moving.pos[0]][moving.pos[1]] = moving;
 
@@ -50,15 +48,9 @@ class App extends Component {
     }
 
     menu() {
-        let piece = this.state.selectedPiece;
-        let target = this.state.selectedTarget;
-
         return (
             <div>
                 <p className="display-3">{this.state.turn ? "White" : "Black"} to play</p>
-                <p className="display-6">
-                    {this.state.selectedPiece != undefined ? "(" + piece.pos[0] + ", " + piece.pos[1] + ")" : "(?, ?)"} -{'>'} {this.state.selectedTarget != undefined ? "(" + target.pos[0] + ", " + target.pos[1] + ")" : "(?, ?)"}
-                </p>
             </div>
         )
     }
