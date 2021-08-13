@@ -11,10 +11,9 @@ class App extends Component {
         super(props);
 
         this.state = {
-            board: boardboardManager.buildBoard(),
+            board: boardManager.buildBoard(),
             turn: true,
-            selectedPiece: undefined,
-            selectedTarget: undefined
+            selectedPiece: undefined
         }
     }
 
@@ -22,18 +21,18 @@ class App extends Component {
         console.log(piece.id)
         this.setState(() => {
             if (this.state.selectedPiece == undefined)
-                return piece.id[0] == 'S' ? null : { selectedPiece: piece }
+                return piece.id[0] == 'S' || piece.team != this.state.turn ? null : { selectedPiece: piece }
             else if (this.state.selectedTarget == undefined)
-                return { selectedTarget: piece };
+                this.movePiece(piece);
         });
     }
 
-    movePiece = () => {
+    movePiece = (selectedTarget) => {
         this.setState(prevState => {
-            if (this.state.selectedPiece != undefined && this.state.selectedTarget != undefined) {
+            if (this.state.selectedPiece != undefined) {
 
                 let moving = this.state.selectedPiece;
-                let target = this.state.selectedTarget;
+                let target = selectedTarget;
                 let newBoard = [...prevState.board];
 
                 newBoard[moving.pos[0]][moving.pos[1]] = pieceManager.createPiece(6, moving.pos[0] >= 4, moving.pos);
@@ -43,7 +42,8 @@ class App extends Component {
                 return {
                     board: newBoard,
                     selectedPiece: undefined,
-                    selectedTarget: undefined
+                    selectedTarget: undefined,
+                    turn: !this.state.turn
                 }
             }
         });
@@ -55,7 +55,7 @@ class App extends Component {
 
         return (
             <div>
-                <button onClick={() => this.movePiece()}>Move Piece</button>
+                <p className="display-3">{this.state.turn ? "White" : "Black"} to play</p>
                 <p className="display-6">
                     {this.state.selectedPiece != undefined ? "(" + piece.pos[0] + ", " + piece.pos[1] + ")" : "(?, ?)"} -{'>'} {this.state.selectedTarget != undefined ? "(" + target.pos[0] + ", " + target.pos[1] + ")" : "(?, ?)"}
                 </p>

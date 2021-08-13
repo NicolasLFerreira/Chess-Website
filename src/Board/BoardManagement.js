@@ -1,3 +1,7 @@
+import PieceManagement from "./PieceManagement";
+
+const pieceManager = new PieceManagement();
+
 class BoardManagement {
     buildBoard() {
         var board = new Array(8);
@@ -23,6 +27,8 @@ class BoardManagement {
                 if (board[row][column] == null) board[row][column] = pieceManager.createPiece(0, team, position);
             }
         }
+
+        return board;
     }
 }
 
