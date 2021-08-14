@@ -64,15 +64,22 @@ class App extends Component {
             print.push(<Rows item={this.state.board[row]} row={row} movePiece={(piece) => this.selectPieces(piece)} />);
         }
 
+        var vp = visualViewport
+
+        console.log(vp.height);
+
         return (
-            <div className="App display-1 row">
-                <div className="col">
+            <div className="App display-3">
+                <div className="row">
                     {this.menu()}
                 </div>
-                <div className="col-6">
-                    {print}
+                <div className="row">
+                    <div className="mobile-show col-3"></div>
+                    <div className="col center-text">
+                        {print}
+                    </div>
+                    <div className="mobile-show col-3"></div>
                 </div>
-                <div className="col"></div>
             </div>
         );
     }

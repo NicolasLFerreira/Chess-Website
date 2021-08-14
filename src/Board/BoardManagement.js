@@ -3,6 +3,7 @@ var pieces = ['♙', '♖', '♘', '♗', '♕', '♔', <span>&nbsp;</span>]
 class BoardManagement {
     constructor(){
         this.board = new Array(8);
+        this.selectedPiece = undefined;
     }
 
     createPiece(index, team, pos) {
