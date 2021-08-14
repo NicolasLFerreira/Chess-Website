@@ -73,12 +73,12 @@ class App extends Component {
                 <div className="row">
                     {this.menu()}
                 </div>
-                <div className="row">
-                    <div className="mobile-show col-3"></div>
-                    <div className="col center-text">
+                <div className="d-flex flex-row">
+                    <div className="flex-column flex-fill mobile-show"></div>
+                    <div className="flex-column flex-fill center-text">
                         {print}
                     </div>
-                    <div className="mobile-show col-3"></div>
+                    <div className="flex-column flex-fill mobile-show"></div>
                 </div>
             </div>
         );
