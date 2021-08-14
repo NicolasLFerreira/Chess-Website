@@ -25,7 +25,7 @@ class Row extends Component {
             )
         }
         return (
-            <div className="d-flex bd-highlight">
+            <div className="d-flex justify-content-center">
                 {' '}{row}{' '}
             </div>
         )
