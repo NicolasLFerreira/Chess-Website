@@ -15,7 +15,7 @@ class Row extends Component {
         var piece = this.props.item;
         var boardStyle;
         for (let column = 0; column < 8; column++) {
-            boardStyle = (((column % 2 == 0 && (this.props.row + 1) % 2 == 0) || (column % 2 != 0 && this.props.row % 2 == 0) ? "bgc-1 " : "bgc-2 ") + (piece[column].team ? "white" : "black"));
+            boardStyle = (((column % 2 == 0 && (this.props.row + 1) % 2 == 0) || (column % 2 != 0 && this.props.row % 2 == 0) ? "bgc-1 " : "bgc-2 ") + (piece[column].team ? "light" : "dark"));
 
             row.push(<Square
                 movePiece={() => this.props.movePiece(piece[column])}
@@ -33,11 +33,3 @@ class Row extends Component {
 }
 
 export default Row;
-
-
-{/* <button
-onClick={() => this.props.movePiece(piece[column])}
-id={piece[column].id}
-className={boardStyle + " flex-grow-1 p-2 bd-highlight"}
-style={{ "width": "25vh" }, { "height": "12.5vh" }}>&nbsp;{this.props.item[column].icon}&nbsp;
-</button>); */}

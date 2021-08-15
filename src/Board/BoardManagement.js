@@ -10,7 +10,7 @@ class BoardManagement {
         return {
             "icon": pieces[index],
             "team": team,
-            "id": (index == 6 ? 'S' : pieces[index]) + (team ? 0 : 1) + pos,
+            "id": (index == 6 ? 'S' : pieces[index]) + (team != null ? (team ? 0 : 1) : 2)  + pos,
             "pos": pos
         }
     }
@@ -24,7 +24,7 @@ class BoardManagement {
             for (let column = 0; column < 8; column++) {
                 var position = row + "" + column;
 
-                if (row > 1 && row < 6) this.board[row][column] = this.createPiece(6, team, position);
+                if (row > 1 && row < 6) this.board[row][column] = this.createPiece(6, null, position);
                 else {
                     team = row >= 4;
 

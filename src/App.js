@@ -6,23 +6,22 @@ class App extends Component {
         super(props);
 
         this.state = {
-
         }
     }
 
-    // menu() {
-    //     return (
-    //         <div>
-    //             <p className="display-3">{this.state.turn ? "White" : "Black"} to play</p>
-    //         </div>
-    //     )
-    // }
+    menu() {
+        return (
+            <div>
+                <p className="display-3">{this.state.turn ? "White" : "Black"} to play</p>
+            </div>
+        )
+    }
 
     render() {
         return (
             <div className="App display-3">
                 <div className="row">
-                    {/* {this.menu()} */}
+                    {this.menu()}
                 </div>
                 <div className="d-flex flex-row">
                     <div className="flex-column flex-fill mobile-show"></div>

@@ -8,28 +8,25 @@ class Board extends Component {
     constructor(props) {
         super(props);
 
+        this.pieceToMove = undefined;
+
         this.state = {
             board: boardManager.buildBoard(),
-            turn: true,
-            selectedPiece: undefined
+            turn: true
         }
     }
 
-    selectPieces = (piece) => {
-        console.log(piece.id)
-        this.setState(() => {
-            if (this.state.selectedPiece == undefined)
-                return piece.id[0] == 'S' || piece.team != this.state.turn ? null : { selectedPiece: piece }
-            else if (this.state.selectedTarget == undefined)
-                this.movePiece(piece);
-        });
+    selectPiece = (piece) => {
+        if (this.pieceToMove == undefined)
+            this.pieceToMove = piece.id[0] == 'S' || piece.team != this.state.turn ? undefined : piece;
+        else if (piece.team != this.state.turn) this.movePiece(piece);
     }
 
     movePiece = (selectedTarget) => {
         this.setState(prevState => {
-            if (this.state.selectedPiece != undefined) {
+            if (this.pieceToMove != undefined) {
 
-                let moving = this.state.selectedPiece;
+                let moving = this.pieceToMove;
                 let target = selectedTarget;
                 let newBoard = [...prevState.board];
 
@@ -37,10 +34,10 @@ class Board extends Component {
                 moving.pos = target.pos;
                 newBoard[moving.pos[0]][moving.pos[1]] = moving;
 
+                this.pieceToMove = undefined;
+
                 return {
                     board: newBoard,
-                    selectedPiece: undefined,
-                    selectedTarget: undefined,
                     turn: !this.state.turn
                 }
             }
@@ -51,8 +48,10 @@ class Board extends Component {
         var print = [];
 
         for (let row = 0; row < 8; row++) {
-            print.push(<Rows item={this.state.board[row]} row={row} movePiece={(piece) => this.selectPieces(piece)} />);
+            print.push(<Rows item={this.state.board[row]} row={row} movePiece={(piece) => this.selectPiece(piece)} />);
         }
+
+        console.log(this.state.board)
 
         return (
             <div>

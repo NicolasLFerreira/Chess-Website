@@ -1,50 +1,58 @@
 body {
-  margin: 0;
-  background-color: gray;
-  font-family: monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+	margin: 0;
+	background-color: gray;
+	font-family: monospace;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
-.white {
-  color: white;
+.light {
+	color: white;
+}
+
+.dark {
+	color: black;
 }
 
 .bgc-1 {
-  background-color: rgb(67, 85, 35);
+	background-color: rgb(67, 85, 35)
+		/*(18, 66, 60)*/
+	;
 }
 
 .bgc-2 {
-  background-color: rgb(107, 107, 1);
+	background-color: rgb(107, 107, 1)
+		/*(94, 141, 218)*/
+	;
 }
 
 .square-size {
-  width: 12.5%;
-  height: 12.5%;
-  max-width: 10vh;
-  max-height: 12.5vh;
+	width: 12.5%;
+	height: 12.5%;
+	max-width: 10vh;
+	max-height: 12.5vh;
 }
 
 .mobile-show {
-  display: inline;
+	display: inline;
 }
 
 /* Smartphone Portrait and Landscape */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-  .mobile-show {
-    display: none;
-  }
+	.mobile-show {
+		display: none;
+	}
 
-  .square-size {
-    width: 12.5%;
-    height: 12.5%;
-    max-width: 10vh;
-    max-height: 12.5vh;
-  }
+	.square-size {
+		width: 12.5%;
+		height: 12.5%;
+		max-width: 10vh;
+		max-height: 12.5vh;
+	}
 }
