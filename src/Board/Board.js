@@ -30,7 +30,7 @@ class Board extends Component {
                 let target = selectedTarget;
                 let newBoard = [...prevState.board];
 
-                newBoard[moving.pos[0]][moving.pos[1]] = boardManager.createPiece(6, moving.pos[0] >= 4, moving.pos);
+                newBoard[moving.pos[0]][moving.pos[1]] = boardManager.createPiece(6, 2, moving.pos);
                 moving.pos = target.pos;
                 newBoard[moving.pos[0]][moving.pos[1]] = moving;
 
