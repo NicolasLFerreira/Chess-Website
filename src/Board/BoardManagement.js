@@ -1,16 +1,22 @@
-var pieces = ['♙', '♖', '♘', '♗', '♕', '♔', <span>&nbsp;</span>]
+var piecesBlack = ['♚', '♛', '♜', '♞', '♝', '♟', <span>&nbsp;</span>]
+var piecesWhite = ['♔', '♕', '♖', '♘', '♗', '♙', <span>&nbsp;</span>]
+
 
 class BoardManagement {
-    constructor(){
+    constructor() {
+
         this.board = new Array(8);
         this.selectedPiece = undefined;
     }
 
     createPiece(index, team, pos) {
         return {
-            "icon": pieces[index],
+            "icon": team ? piecesWhite[index] : piecesBlack[index],
             "team": team,
-            "id": (index == 6 ? 'S' : pieces[index]) + (team != null ? (team ? 0 : 1) : 2)  + pos,
+            "id":
+                index + "" +
+                (team != null ? (team ? 0 : 1) : 2) + "" +
+                pos,
             "pos": pos
         }
     }
@@ -29,9 +35,13 @@ class BoardManagement {
                     team = row >= 4;
 
                     if (row == 0 || row == 7) {
-                        for (let i = 0; i < 3; i++) if (column == i || column == 7 - i) this.board[row][column] = this.createPiece(i + 1, team, position);
-                        if (column == 4) this.board[row][column] = this.createPiece(5, team, position);
-                        if (column == 3) this.board[row][column] = this.createPiece(4, team, position);
+                        for (let i = 0; i < 3; i++)
+                            if (column == i || column == 7 - i)
+                                this.board[row][column] = this.createPiece(3 - i, team, position);
+                        if (column == 4)
+                            this.board[row][column] = this.createPiece(5, team, position);
+                        if (column == 3)
+                            this.board[row][column] = this.createPiece(4, team, position);
                     }
                 }
 
@@ -51,3 +61,5 @@ export default BoardManagement;
 //     "id": "",
 //     "pos": ["", ""]
 // };
+
+// ID = index of icon + team 0-white, 1-black, 2-neutral + pos[2] 0 <= x <= 7

@@ -13,22 +13,24 @@ code {
 }
 
 .light {
-	color: white;
+	color: beige;
 }
 
 .dark {
-	color: black;
+	color: rgb(0, 0, 0);
 }
 
 .bgc-1 {
-	background-color: rgb(67, 85, 35)
-		/*(18, 66, 60)*/
+	background-color: #6e3b12;
+	/* background-color: rgb(67, 85, 35) */
+	/* -> (18, 66, 60)*/
 	;
 }
 
 .bgc-2 {
-	background-color: rgb(107, 107, 1)
-		/*(94, 141, 218)*/
+	background-color: #a0816c;
+	/* background-color: rgb(107, 107, 1) */
+	/* blue -> (94, 141, 218)*/
 	;
 }
 
