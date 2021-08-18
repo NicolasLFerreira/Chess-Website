@@ -20,8 +20,15 @@
 
 class BasePiece {
     constructor(piece) {
-        this.id;
-        this.team;
-        this.pos;
+        this.id = piece.id;
+        this.team = piece.team;
+        this.position = piece.position;
     }
+
+    // QoL methods for cheking
+
+    isBlank = () => this.team == 2;
+    isSameType = (id) => this.id == id;
+    isSameTeam = (team) => this.team == team;
+    isSamePiece = (position) => this.position == position;
 }

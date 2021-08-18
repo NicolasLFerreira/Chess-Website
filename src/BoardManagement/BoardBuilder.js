@@ -11,32 +11,67 @@
 // Blank_space = 6
 
 class BoardBuilder {
+    constructor() {
+        this.position = new Array(2);
+        this.team = undefined;
+    }
+
     buildBoard() {
-        let board = new Array(8);
-        let team = 0;
+        const size = 8;
+        let board = new Array(size);
 
-        for (let row = 0; row < 8; row++) {
-            board[row] = new Array(8);
+        for (let row = 0; row < size; row++) {
+            board[row] = new Array(size);
 
-            for (let column = 0; column < 8; column++) {
+            for (let column = 0; column < size; column++) {
+                this.position = [row, column];
+
                 if (row <= 1 || row >= 6) {
-                    team = row < 4 ? 0 : 1;
+                    this.team = row < 4;
 
                     if (row == 0 || row == 7) {
-                        if (column == 0 || column == 7) console.log(1); // Creates rooks
-                        if (column == 1 || column == 6) console.log(1); // Creates knights
-                        if (column == 2 || column == 5) console.log(1); // Creates bishops
-                        if (column == 3) console.log(1); // Creates queen
-                        if (column == 4) console.log(1); // Creates king
+
+                        // Creates rooks
+                        if (column == 0 || column == 7)
+                            board[row][column] = this.buildPiece(2);
+
+                        // Creates knights
+                        else if (column == 1 || column == 6)
+                            board[row][column] = this.buildPiece(4);
+
+                        // Creates bishops
+                        else if (column == 2 || column == 5)
+                            board[row][column] = this.buildPiece(3);
+
+                        // Creates queen
+                        else if (column == 3)
+                            board[row][column] = this.buildPiece(1);
+
+                        // Creates king
+                        else
+                            board[row][column] = this.buildPiece(0);
+
                     }
-                    else {
-                        console.log(1); // Creates pawn
-                    }
+                    // Creates pawn
+                    else
+                        board[row][column] = this.buildPiece(5);
                 }
+                // Creates empty
                 else {
-                    team = 2;
+                    this.team = undefined;
+                    board[row][column] = this.buildPiece(6);
                 }
             }
         }
+
+        return board;
     }
+
+    buildPiece = (id) => ({
+        "id": id,
+        "team": this.team,
+        "position": this.position
+    });
 }
+
+export default BoardBuilder;
