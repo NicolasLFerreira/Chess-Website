@@ -1,11 +1,14 @@
-import { assertDeclareOpaqueType } from "@babel/types";
 import React, { Component } from "react";
 import Board from "./Board";
 
 // The current showing pieces for each team.
 
-var piecesBlack = ['♚', '♛', '♜', '♞', '♝', '♟', <span>&nbsp;</span>]
-var piecesWhite = ['♔', '♕', '♖', '♘', '♗', '♙', <span>&nbsp;</span>]
+const emptyCharacter = "\0";
+
+const piecesBlack = ['♚', '♛', '♜', '♞', '♝', '♟', emptyCharacter];
+const piecesWhite = ['♔', '♕', '♖', '♘', '♗', '♙', emptyCharacter];
+
+const pieces = [piecesBlack, piecesWhite];
 
 // BoardPrinter transforms the raw data of the board into JSX objects.
 // It's called after the information is already processed and only needs to be rendered
@@ -17,38 +20,35 @@ class BoardPrinter extends Component {
         this.board = this.props.board;
     }
 
-    square(icon, bgc) {
+    backgroundColor = (position) => (position[0] % 2 == 0 && position[1] % 2 != 0) || (position[0] % 2 != 0 && position[1] % 2 == 0) ? 1 : 2;
+
+    square(piece, position) {
         return (
-            <button class={"flex-grow-1 p-2 square-size bgc-" + bgc}>
-                <div className="center-text">{icon}</div>
+            <button class={"flex-grow-1 p-2 square-size bgc-" + this.backgroundColor(position)}>
+                <div className="center-text">{pieces[piece.team ? 0 : 1][piece.id]}</div>
             </button>
         );
     }
 
-    row(row, team) {
-        let row = new Array(8);
-
-        return (
-            <div className="d-flex justify-content-center">
-                {' '}{row}{' '}
-            </div>
-        );
-    }
-
     render() {
-        let team = undefined;
+        let boardJSX = new Array(8);
+        let current = undefined;
 
         for (let row = 0; row < 8; row++) {
-            if (row <= 1 || row >= 6)
-                team = row < 4;
-            else
-                team = undefined;
-            this.row(this.board[row], row < 4)
+            current = new Array(8);
+            for (let column = 0; column < 8; column++) {
+                current[column] = this.square(this.board[row][column], [row, column]);
+            }
+            boardJSX[row] = (
+                <div className="d-flex justify-content-center">
+                    {current}
+                </div>
+            )
         }
 
         return (
             <div>
-
+                {boardJSX}
             </div>
         );
     }

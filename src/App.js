@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import Board from "./BoardOld/Board";
+import BoardManager from "./BoardManagement/BoardManager";
 
 class App extends Component {
     constructor(props) {
         super(props);
+
+        this.board = new BoardManager();
 
         this.state = {
         }
@@ -26,7 +28,7 @@ class App extends Component {
                 <div className="d-flex flex-row">
                     <div className="flex-column flex-fill mobile-show"></div>
                     <div className="flex-column flex-fill center-text">
-                        <Board />
+                        {this.board.printBoard()}
                     </div>
                     <div className="flex-column flex-fill mobile-show"></div>
                 </div>
