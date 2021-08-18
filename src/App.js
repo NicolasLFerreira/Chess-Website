@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Board from "./Board/Board";
+import Board from "./BoardOld/Board";
 
 class App extends Component {
     constructor(props) {

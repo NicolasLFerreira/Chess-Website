@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Rows from "./Row";
 import BoardManagement from "./BoardManagement";
-import SetTurn from "./SetTurn";
-import reactDom from "react-dom";
 
 const boardManager = new BoardManagement();
 
@@ -53,13 +51,8 @@ class Board extends Component {
             print.push(<Rows item={this.state.board[row]} row={row} movePiece={(piece) => this.selectPiece(piece)} />);
         }
 
-        console.log(this.state.board)
-
-        react-document
-
         return (
             <div className="fw-bolder">
-                <SetTurn turn={this.state.turn}/>
                 {print}
             </div>
         )
