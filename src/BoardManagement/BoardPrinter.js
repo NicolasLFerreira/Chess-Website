@@ -24,7 +24,7 @@ class BoardPrinter extends Component {
 
     square(piece, position) {
         return (
-            <button class={"flex-grow-1 p-2 square-size bgc-" + this.backgroundColor(position)}>
+            <button class={"flex-grow-1 p-2 square-size bgc-" + this.backgroundColor(position) + " " + (piece.team ? "black" : "light")}>
                 <div className="center-text">{pieces[piece.team ? 0 : 1][piece.id]}</div>
             </button>
         );
