@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Board from "./Board";
 
 // The current showing pieces for each team.
 
-const emptyCharacter = "\0";
+const emptyCharacter = <span>&nbsp;</span>;
 
 const piecesBlack = ['♚', '♛', '♜', '♞', '♝', '♟', emptyCharacter];
 const piecesWhite = ['♔', '♕', '♖', '♘', '♗', '♙', emptyCharacter];
@@ -24,7 +23,7 @@ class BoardPrinter extends Component {
 
     square(piece, position) {
         return (
-            <button class={"flex-grow-1 p-2 square-size bgc-" + this.backgroundColor(position) + " " + (piece.team ? "black" : "light")}>
+            <button class={"flex-grow-1 p-2 square-size bgc-" + this.backgroundColor(position) + " " + (piece.team ? "dark" : "light")}>
                 <div className="center-text">{pieces[piece.team ? 0 : 1][piece.id]}</div>
             </button>
         );

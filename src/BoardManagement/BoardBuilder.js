@@ -37,11 +37,11 @@ class BoardBuilder {
 
                         // Creates knights
                         else if (column == 1 || column == 6)
-                            board[row][column] = this.buildPiece(4);
+                            board[row][column] = this.buildPiece(3);
 
                         // Creates bishops
                         else if (column == 2 || column == 5)
-                            board[row][column] = this.buildPiece(3);
+                            board[row][column] = this.buildPiece(4);
 
                         // Creates queen
                         else if (column == 3)

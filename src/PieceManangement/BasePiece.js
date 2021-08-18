@@ -1,3 +1,5 @@
+import Movements from "./Movements";
+
 // The way pieces id work:
 // King = 0
 // Queen = 1
@@ -19,10 +21,11 @@
 
 
 class BasePiece {
-    constructor(piece) {
+    constructor(piece, movements) {
         this.id = piece.id;
         this.team = piece.team;
         this.position = piece.position;
+        this.legalMovements = new Movements(movements[0], movements[1]);
     }
 
     // QoL methods for cheking
@@ -31,4 +34,12 @@ class BasePiece {
     isSameType = (id) => this.id == id;
     isSameTeam = (team) => this.team == team;
     isSamePiece = (position) => this.position == position;
+
+    // Move method
+
+    move() {
+
+    }
 }
+
+export default BasePiece;
