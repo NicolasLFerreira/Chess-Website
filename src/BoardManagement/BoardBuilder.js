@@ -64,19 +64,21 @@ class BoardBuilder {
                         // Creates king.
                         else
                             board[row][column] = this.buildPiece(0);
-
                     }
 
                     // Front ranks.
-                    // Creates pawn.
-                    else
-                        board[row][column] = this.buildPiece(5);
-                    
-                    
-                    // else {
-                    //     this.team = undefined;
-                    //     board[row][column] = this.buildPiece(6);
-                    // }
+                    else {
+                        if (true) {
+                            // Creates pawn.
+                            board[row][column] = this.buildPiece(5);
+                        }
+
+                        // Incase I want to remove the pawn rank.
+                        else {
+                            this.team = undefined;
+                            board[row][column] = this.buildPiece(6);
+                        }
+                    }
                 }
                 // Creates empty.
                 else {

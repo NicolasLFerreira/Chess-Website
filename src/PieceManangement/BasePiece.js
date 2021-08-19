@@ -39,7 +39,7 @@ class BasePiece {
     // Move method
 
     checkMove(newPosition, board) {
-        throw new Error("Movement method not implemented.");
+        throw new Error("checkMove(newPosition, board) not implemented");
     }
 }
 

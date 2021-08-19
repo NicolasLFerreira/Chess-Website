@@ -2,10 +2,11 @@ import React, { Component } from "react";
 
 // The current showing pieces for each team.
 
+const style = false;
 const emptyCharacter = <span>&nbsp;</span>;
 
-const piecesBlack = ['♚', '♛', '♜', '♞', '♝', '♟', emptyCharacter];
-const piecesWhite = ['♔', '♕', '♖', '♘', '♗', '♙', emptyCharacter];
+const piecesBlack = style ? ['♚', '♛', '♜', '♞', '♝', '♟', emptyCharacter] : ['@', '¥', '][', '&', 'Í', '¡', emptyCharacter];
+const piecesWhite = style ? ['♔', '♕', '♖', '♘', '♗', '♙', emptyCharacter] : piecesBlack;
 
 const pieces = [piecesBlack, piecesWhite];
 

@@ -11,7 +11,19 @@ class BoardManager {
     }
 
     test() {
-        console.log(this.board.data[0][4].checkMove([6,4], this.board.data));
+        let p = [0, 4];
+        let t = [p[0] + 1, 6];
+        let po = this.board.data[p[0]][p[1]];
+        let to = this.board.data[t[0]][t[1]];
+
+        console.log("------------------------------------------------------------");
+        console.log("Piece moving: " + po.constructor.name);
+        console.log(p);
+        console.log("");
+        console.log("Target: " + to.constructor.name);
+        console.log(t);
+        console.log("");
+        console.log("Status: " + po.checkMove(t, this.board.data));
     }
 
     printBoard = () => <BoardPrinter board={this.board.data} />;
