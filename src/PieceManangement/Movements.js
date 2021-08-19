@@ -4,23 +4,12 @@
 // north-west, north-east, south-east, south-west = 4,5,6,7
 
 class Movements {
-    constructor(straight, diagonal) {
-        this.directions = new Array(8);
-
-        this.straight(straight);
-        this.diagonal(diagonal);
+    constructor() {
+        
     }
 
-    straight(straight) {
-        for (let index = 0; index < 4; index++) {
-            this.directions[index] = straight[index];
-        }
-    }
+    checkMoves() {
 
-    diagonal(diagonal) {
-        for (let index = 0; index < 4; index++) {
-            this.directions[index] = diagonal[index];
-        }
     }
 }
 

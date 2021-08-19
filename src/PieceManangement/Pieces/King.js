@@ -1,14 +1,23 @@
 import BasePiece from "../BasePiece";
 
-class King extends BasePiece {
-    constructor(piece, movements) {
-        super(piece, movements)
+const moves = [1, 1, 1, 1, 1, 1, 1, 1];
 
-        this.canCastle = true;
+class King extends BasePiece {
+    constructor(piece) {
+        super(piece, moves);
+
     }
 
-    moves() {
-        this.legalMovements
+    checkMove(newPosition, board) {
+        let target = board[newPosition[0]][newPosition[1]];
+
+        if (((newPosition[0] - this.position[0] >= 1) || (newPosition[0] - this.position[0] <= -1)) ||
+            ((newPosition[1] - this.position[1] >= 1) || (newPosition[1] - this.position[1] <= -1))) return false;
+
+        if (target.team == this.team) return false;
+        // if (target.id != 2 && target.hasMoved && this.hasMoved) return false;
+
+        return true;
     }
 }
 

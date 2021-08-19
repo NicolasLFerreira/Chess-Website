@@ -21,11 +21,12 @@ import Movements from "./Movements";
 
 
 class BasePiece {
-    constructor(piece, movements) {
+    constructor(piece) {
         this.id = piece.id;
         this.team = piece.team;
         this.position = piece.position;
-        this.legalMovements = new Movements(movements[0], movements[1]);
+        this.hasMoved = false;
+        this.legalMovements = new Movements();
     }
 
     // QoL methods for cheking
@@ -37,8 +38,8 @@ class BasePiece {
 
     // Move method
 
-    move() {
-
+    checkMove(newPosition, board) {
+        throw new Error("Movement method not implemented.");
     }
 }
 

@@ -7,9 +7,14 @@ import Board from "./Board";
 class BoardManager {
     constructor() {
         this.board = new Board(new BoardBuilder().buildBoard());
+        this.test();
     }
 
-    printBoard = () => <BoardPrinter board={this.board.data}/>;
+    test() {
+        console.log(this.board.data[0][4].checkMove([6,4], this.board.data));
+    }
+
+    printBoard = () => <BoardPrinter board={this.board.data} />;
 }
 
 export default BoardManager;
