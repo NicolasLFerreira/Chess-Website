@@ -19,6 +19,9 @@ class Board {
                     this.data[row][column]
             )
     );
+
+    set = (piece, position) =>
+        this.data[position[0]][position[1]] = piece;
 }
 
 export default Board;

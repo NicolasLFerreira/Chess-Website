@@ -14,11 +14,23 @@ class BoardManager {
         // let p = [0, 4];
         // let t = [p[0] + 1, p[1] + 1];
         // this.movementProcessor(this.board.get(p[0], p[1]), this.board.get(t[0], t[1]));
+
+        this.selectedPiece = undefined;
     }
 
     callMovement(object) {
-        console.log("Called");
-        console.log(object);
+        console.log(object["constructor"].name);
+        console.log(object.hasOwnProperty("constructor"));
+        debug.boardData(this.board, object);
+        debug.boardData(this.board, this.selectedPiece);
+        if (this.selectedPiece == undefined) {
+            if (object.id == 6) return;
+            else this.selectedPiece = object;
+        }
+        else {
+            if (object.team != this.selectedPiece.team) this.movementProcessor(this.selectedPiece, object);
+            else this.selectedPiece = undefined;
+        }
     }
 
     movementProcessor(piece, target) {
@@ -27,13 +39,11 @@ class BoardManager {
         console.clear();
         debug.movementData(this.board, piece, target);
         debug.boardData(this.board, piece);
-
+        
         // Move
 
-        if (piece.team != target.team) {
-            if (piece.checkMove(target, this.board.get())) {
-                this.movePiece(piece, target);
-            }
+        if (piece.checkMove(target, this.board.get())) {
+            this.movePiece(piece, target);
         }
 
         debug.boardData(this.board, target);

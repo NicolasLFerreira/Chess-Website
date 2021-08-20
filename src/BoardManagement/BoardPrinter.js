@@ -23,7 +23,6 @@ class BoardPrinter extends Component {
     backgroundColor = (position) => (position[0] % 2 == 0 && position[1] % 2 != 0) || (position[0] % 2 != 0 && position[1] % 2 == 0) ? 1 : 2;
 
     square(piece, position) {
-        console.log(piece);
         return (
             <button class={"flex-grow-1 p-2 square-size bgc-" + this.backgroundColor(position) + " " + (piece.team ? "dark" : "light")} onClick={() => this.props.caller(piece)}>
                 <div className="center-text">{pieces[piece.team ? 0 : 1][piece.id]}</div>
