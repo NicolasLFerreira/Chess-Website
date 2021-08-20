@@ -27,6 +27,7 @@ class BasePiece {
         this.position = piece.position;
         this.hasMoved = false;
         this.legalMovements = new Movements();
+        this.caller = piece.caller;
     }
 
     // QoL methods for cheking
@@ -38,7 +39,7 @@ class BasePiece {
 
     // Move method
 
-    checkMove(newPosition, board) {
+    checkMove(target, board) {
         throw new Error("checkMove(newPosition, board) not implemented");
     }
 }

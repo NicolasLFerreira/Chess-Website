@@ -10,9 +10,7 @@ class Knight extends BasePiece {
 
     }
 
-    legalMovements() {
-
-    }
+    checkMove = (newPosition, board) => true;
 }
 
 export default Knight;

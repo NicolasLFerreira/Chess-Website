@@ -1,12 +1,4 @@
-import King from "../PieceManangement/Pieces/King";
-import Queen from "../PieceManangement/Pieces/Queen";
-import Rook from "../PieceManangement/Pieces/Rook";
-import Bishop from "../PieceManangement/Pieces/Bishop";
-import Knight from "../PieceManangement/Pieces/Knight";
-import Pawn from "../PieceManangement/Pieces/Pawn";
-import BasePiece from "../PieceManangement/BasePiece";
-
-const pieceObjects = [King, Queen, Rook, Bishop, Knight, Pawn, BasePiece];
+import PieceManager from "../PieceManangement/PieceManager";
 
 // BoardBuilder is called when the match starts.
 // It builds the board by creating the pieces (calls other classes for that) and puts them in the instance of the Board class.
@@ -19,6 +11,8 @@ const pieceObjects = [King, Queen, Rook, Bishop, Knight, Pawn, BasePiece];
 // Knight = 4
 // Pawn = 5
 // Blank_space = 6
+
+const pieceManager = new PieceManager();
 
 class BoardBuilder {
     constructor() {
@@ -68,7 +62,7 @@ class BoardBuilder {
 
                     // Front ranks.
                     else {
-                        if (true) {
+                        if (!true) {
                             // Creates pawn.
                             board[row][column] = this.buildPiece(5);
                         }
@@ -92,15 +86,9 @@ class BoardBuilder {
         return board;
     }
 
-    // Returns a new piece instance with its respective data.
-    buildPiece = (id) => new pieceObjects[id](
-        {
-            "id": id, // ID defines what piece it is.
-            "team": this.team, // true = black, false = white, undefined = neutral.
-            "position": this.position // Position for movement checking.
-        }
-    );
-
+    buildPiece(id){
+        return pieceManager.buildPiece(id, this.team, this.position);
+    }
 }
 
 export default BoardBuilder;

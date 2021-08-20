@@ -12,7 +12,7 @@ class Pawn extends BasePiece {
 
     checkMove(newPosition, board) {
         let target = board[newPosition[0]][newPosition[1]];
-        if (newPosition[0] != this.position[0]) return false;
+        if (newPosition[1] != this.position[1]) return false;
     }
 }
 

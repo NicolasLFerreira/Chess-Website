@@ -9,6 +9,8 @@ class Queen extends BasePiece {
         super(piece, moves);
 
     }
+
+    checkMove = (newPosition, board) => true;
 }
 
 export default Queen;

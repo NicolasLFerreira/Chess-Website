@@ -9,6 +9,8 @@ class Bishop extends BasePiece {
         super(piece, moves);
 
     }
+
+    checkMove = (newPosition, board) => true;
 }
 
 export default Bishop;

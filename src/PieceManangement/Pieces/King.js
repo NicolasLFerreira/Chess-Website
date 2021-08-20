@@ -8,19 +8,18 @@ class King extends BasePiece {
 
     }
 
-    checkMove(newPosition, board) {
-        let target = board[newPosition[0]][newPosition[1]];
+    checkMove(target, board) {
+        // 3 - 2 == 1 -> target[0] - this.position[0] >= 1 -> true
+        // 2 - 3 == -1 -> target[0] - this.position[0] <= -1 -> true
+        // 5 - 2 == 3 -> target[0] - this.position[0] <= 1 -> false
+        // 2 - 5 == -3 -> target[0] - this.position[0] >= 1 -> false
 
-        // 3 - 2 == 1 -> newPosition[0] - this.position[0] >= 1 -> true
-        // 2 - 3 == -1 -> newPosition[0] - this.position[0] <= -1 -> true
-        // 5 - 2 == 3 -> newPosition[0] - this.position[0] <= 1 -> false
-        // 2 - 5 == -3 -> newPosition[0] - this.position[0] >= 1 -> false
-        
         // console.log("Calc: ");
-        // console.log(newPosition[0] - this.position[0]);
+        // console.log(target[0] - this.position[0]);
 
-        if ((newPosition[0] - this.position[0] > 1 || newPosition[0] - this.position[0] < -1) || (newPosition[1] - this.position[1] > 1 || newPosition[1] - this.position[1] < -1)) return false;
-
+        if ((target.position[0] - this.position[0] > 1 || target.position[0] - this.position[0] < -1) ||
+            (target.position[1] - this.position[1] > 1 || target.position[1] - this.position[1] < -1))
+            return false;
         return true;
     }
 }

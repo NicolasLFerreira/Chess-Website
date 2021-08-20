@@ -4,13 +4,21 @@
 class Board {
     constructor(boardArray) {
         // Gets the intial information of the chess board.
-        // Declares the arrays that will keep track of the current pieces. 
+        // Declares the arrays that will keep track of the current pieces.
 
         this.data = boardArray;
-
-        this.whitePieces = new Array(16);
-        this.blackPieces = new Array(16);
     }
+
+    get = (row, column) =>
+    (
+        row == undefined ?
+            this.data :
+            (
+                column == undefined ?
+                    this.data[row] :
+                    this.data[row][column]
+            )
+    );
 }
 
 export default Board;
