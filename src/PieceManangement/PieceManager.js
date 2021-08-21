@@ -6,13 +6,13 @@ import Knight from "../PieceManangement/Pieces/Knight";
 import Pawn from "../PieceManangement/Pieces/Pawn";
 import BasePiece from "../PieceManangement/BasePiece";
 
-const pieceObjects = [King, Queen, Rook, Bishop, Knight, Pawn, BasePiece];
+const pieceObjects = [King, Queen, Rook, Knight, Bishop, Pawn, BasePiece];
 
 // Manages operations related to pieces.
 
 class PieceManager {
     constructor() {
-
+        this.emptyPiece = this.buildPiece(6, undefined, [-1, -1])
     }
 
     // Returns a new piece instance with its respective data.

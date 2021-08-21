@@ -1,33 +1,43 @@
 class Debugger {
+    header = (title) => console.log("\n:>", title, "=> {")
+    log = (message) => console.log("\t>", message);
+
+    pieceData = (piece) => (
+        "Piece: " + this.pieceQuery(this.pieceQuery(piece, "constructor"), "name") +
+        " : " +
+        (this.pieceQuery(piece, "team") == undefined ? "neutral"
+            : (this.pieceQuery(piece, "team") ? "black"
+                : "white"))
+    );
+
     boardData(board, piece) {
-        console.log("\nBoard Data => {\n");
-        console.log("Data about: " + this.pieceQuery(this.pieceQuery(piece, "constructor"), "name") + " " + (this.pieceQuery(piece, "team") == undefined ? "neutral" : (this.pieceQuery(piece, "team") ? "black" : "white")));
-        console.log(board.get());
-        console.log(board.get(this.pieceQuery(piece, "position")[0]));
-        console.log(board.get(this.pieceQuery(piece, "position")[0], this.pieceQuery(piece, "position")[1]));
+        this.header("Board Data");
+        this.log(this.pieceData(piece));
+        this.log(board.get());
+        if (piece != undefined) {
+            this.log(board.get(this.pieceQuery(piece, "position")[0]));
+            this.log(board.get(this.pieceQuery(piece, "position")[0], this.pieceQuery(piece, "position")[1]));
+        }
+        else {
+            this.log("OBJECT DOESN'T HAVE POSITION");
+        }
         console.log("}");
     }
 
     movementData(board, piece, target) {
-        console.log("Movement Data => {");
-        console.log("Piece moving: " + this.pieceQuery(this.pieceQuery(piece, "constructor"), "name") + " " + (this.pieceQuery(piece, "team") == undefined ? "neutral" : (this.pieceQuery(piece, "team") ? "black" : "white")));
-        console.log(piece.position);
-        console.log("\nTarget: " + this.pieceQuery(this.pieceQuery(target, "constructor"), "name") + " " + (this.pieceQuery(target, "team") == undefined ? "neutral" : (this.pieceQuery(target, "team") ? "black" : "white")));
-        console.log(target.position);
-        console.log("\nStatus: " + piece.checkMove(target, board.get()));
+        this.header("Movement Data");
+        this.log(this.pieceData(piece));
+        this.log(piece.position);
+        this.log(this.pieceData(target));
+        this.log(target.position);
+        this.log(("Status:", piece.checkMove(target, board.get())));
         console.log("}");
     }
 
     pieceQuery = (object, property) => (
-        (
-            object == null ||
-            object == undefined
-        )
-            ? "N/A"
-            : (
-                object.hasOwnProperty(property) ?
-                    object[property] : "N/A"
-            )
+        (object == undefined) ? "N/A"
+            : (object[property] == undefined) ? "N/A"
+                : object[property]
     );
 }
 

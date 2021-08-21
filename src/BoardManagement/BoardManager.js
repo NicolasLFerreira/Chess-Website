@@ -18,17 +18,18 @@ class BoardManager {
         this.selectedPiece = undefined;
     }
 
-    callMovement(object) {
-        console.log(object["constructor"].name);
-        console.log(object.hasOwnProperty("constructor"));
-        debug.boardData(this.board, object);
+    callMovement(piece) {
+        
+        console.clear();
+        debug.boardData(this.board, piece);
         debug.boardData(this.board, this.selectedPiece);
+
         if (this.selectedPiece == undefined) {
-            if (object.id == 6) return;
-            else this.selectedPiece = object;
+            if (piece == undefined) return;
+            else this.selectedPiece = piece;
         }
         else {
-            if (object.team != this.selectedPiece.team) this.movementProcessor(this.selectedPiece, object);
+            if (piece.team != this.selectedPiece.team) this.movementProcessor(this.selectedPiece, piece);
             else this.selectedPiece = undefined;
         }
     }
@@ -37,9 +38,9 @@ class BoardManager {
         // Debug
 
         console.clear();
-        debug.movementData(this.board, piece, target);
         debug.boardData(this.board, piece);
-        
+        debug.movementData(this.board, piece, target);
+
         // Move
 
         if (piece.checkMove(target, this.board.get())) {
@@ -54,7 +55,7 @@ class BoardManager {
         this.board.data[piece.position[0]][piece.position[1]] = new PieceManager().buildPiece(6, undefined, [piece.position[0], piece.position[1]]);
     }
 
-    printBoard = () => <BoardPrinter board={this.board.data} caller={(object) => this.callMovement(object)}/>;
+    printBoard = () => <BoardPrinter board={this.board.data} caller={(object) => this.callMovement(object)} />;
 }
 
 export default BoardManager;
