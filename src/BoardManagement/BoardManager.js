@@ -21,8 +21,8 @@ class BoardManager {
     callMovement(piece) {
         
         console.clear();
-        debug.boardData(this.board, piece);
-        debug.boardData(this.board, this.selectedPiece);
+        debug.pieceBoardData(this.board, piece);
+        debug.pieceBoardData(this.board, this.selectedPiece);
 
         if (this.selectedPiece == undefined) {
             if (piece == undefined) return;
@@ -38,8 +38,8 @@ class BoardManager {
         // Debug
 
         console.clear();
-        debug.boardData(this.board, piece);
-        debug.movementData(this.board, piece, target);
+        debug.pieceBoardData(this.board, piece);
+        debug.moveData(this.board, piece, target);
 
         // Move
 
@@ -47,7 +47,7 @@ class BoardManager {
             this.movePiece(piece, target);
         }
 
-        debug.boardData(this.board, target);
+        debug.pieceBoardData(this.board, target);
     }
 
     movePiece(piece, target) {
